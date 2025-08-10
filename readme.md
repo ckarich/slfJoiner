@@ -16,8 +16,8 @@ python slfjoiner.py <inputFile1> <inputFile2> <outfile>
 
 ## why the hell?
 * my bikecomputer (Sigma ROX 11.1 EVO) died on me once during a ride thus splitting my recorded activity/track into two parts (there is no `resume last activity ` ...)
-* i wanted to join both activities to show up as one continuous actity/track incl. stats and gps-coords - so i can export the complete route to komoot
-* after merging the summary-data manually (slf is just XML) I noticde that the activity was shown partly incomplete (however it was enough to export to komoot) 
+* i wanted to join both activities to show up as one continuous activity/track incl. stats and gps-coords - so i can export the complete route to komoot
+* after merging the summary-data manually (slf is just XML) I noticed that the activity was shown partly incomplete (however it was enough to export to komoot) 
 * i wanted to write my first python project
 * i wanted to testdrive copilot 
 
