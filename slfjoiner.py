@@ -126,6 +126,22 @@ def update_totallap(totallap, finallap, dataOut):
     totallap.set('longitude', finallap.get('longitude', '0'))
     totallap.set('endTime', finallap.get('endTime', '0'))
 
+def fix_average_speed(rootOut):
+    total_distance = 0.0
+    total_time = 0
+    for marker in rootOut.findall('./Markers/Marker[@type="al"]'):
+        distance = float(marker.get('distance', '0'))
+        time = int(marker.get('time', '0'))
+        total_distance += distance
+        total_time += time
+    if total_time > 0:
+        average_speed = round(total_distance / (total_time / 100), 3) 
+    else:
+        average_speed = 0.0
+    rootOut.find('./GeneralInformation/averageSpeed').text = str(average_speed)
+    rootOut.find('./Markers/Marker[@type="l"]').set('averageSpeed', str(average_speed))
+
+
 def finalize_and_write(rootOut, root2, output_filename):
     rootOut.find('./GeneralInformation/GUID').text = str(uuid.uuid4())
     name_elem = rootOut.find('./GeneralInformation/name')
@@ -157,6 +173,7 @@ def main():
         merge_entries_and_markers(rootOut, root1, root2, dataOne, dataTwo, dataOut, True)
     else:
         merge_entries_and_markers(rootOut, root2, root1, dataTwo, dataOne, dataOut, False)
+    fix_average_speed(rootOut)
     finalize_and_write(rootOut, root2 if start1 < start2 else root1, output_filename)
 
 if __name__ == "__main__":
