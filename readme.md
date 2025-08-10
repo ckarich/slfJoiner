@@ -1,5 +1,5 @@
 # SLFJoiner
-merging two SLF Files (sigma sport log file) to fix broken activities/tracks splitted by your sigma bike computer
+merging two SLF Files (sigma sport log file) to fix broken activities/tracks splitted by your sigma bike computer.
 
 ## how to run
 ```sh
